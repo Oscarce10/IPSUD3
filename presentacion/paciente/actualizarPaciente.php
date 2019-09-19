@@ -45,6 +45,7 @@ include 'presentacion/menuAdministrador.php';
 								<input type="text" name="direccion" class="form-control" placeholder="Direccion" required="required" value="<?php echo $paciente->getDireccion(); ?>">
 							</div>
 							<button type="submit" name="actualizar" class="btn btn-primary">Actualizar</button>
+							<a class="btn btn-light" href="<?php echo "index.php?pid=" . base64_encode("presentacion/paciente/consultarPaciente.php") ?>" role="button">Volver</a>
 						</form>
 					</div>
 				</div>

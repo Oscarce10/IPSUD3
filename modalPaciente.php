@@ -26,7 +26,30 @@ $paciente->consultar();
             </tr>
             <tr>
                 <th width="20%">Foto</th>
-                <td><img src="/IPSUD/fotos/<?php echo $paciente->getFoto(); ?>" /></td>
+                <?php 
+                echo "<td>" . (($paciente->getFoto() !== "" && file_exists("img/" . $paciente->getFoto() . "") && $paciente->getFoto())?"<img src='img/" . $paciente->getFoto() . "' width='300px'/>" :
+                 "<i class='fas fa-user-tie fa-3x'></i>") . "</td>";
+                ?>
+            </tr>
+            <tr>
+                <th width="20%">Cedula</th>
+                <td><?php echo $paciente->getCedula(); ?></td>
+            </tr>
+            <tr>
+                <th width="20%">Correo</th>
+                <td><?php echo $paciente->getCorreo(); ?></td>
+            </tr>
+            <tr>
+                <th width="20%">Direccion</th>
+                <td><?php echo $paciente->getDireccion(); ?></td>
+            </tr>
+            <tr>
+                <th width="20%">Telefono</th>
+                <td><?php echo $paciente->getTelefono(); ?></td>
+            </tr>
+            <tr>
+                <th width="20%">Estado</th>
+                <td><?php echo (($paciente->getEstado()==1)?"<i class='fas fa-check-circle fa-2x text-success'></i>":"<i class='fas fa-times-circle fa-2x   text-danger'></i>"); ?></td>
             </tr>
         </tbody>
     </table>

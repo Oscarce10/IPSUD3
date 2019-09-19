@@ -47,7 +47,7 @@ class PacienteDAO
 
     function consultar()
     {
-        return "SELECT nombre, apellido, correo, cedula, telefono, direccion, foto
+        return "SELECT nombre, apellido, correo, cedula, telefono, direccion, foto, estado
                 FROM paciente
                 WHERE idpaciente =" . $this->id;
     }

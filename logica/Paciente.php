@@ -85,8 +85,9 @@ class Paciente extends Persona
         $this->correo = $resultado[2];
         $this->cedula = $resultado[3];
         $this->telefono = $resultado[4];
-        $this->direccion = $resultado[5];
+        $this->direccion = $resultado[5];        
         $this->foto = $resultado[6];
+        $this->estado = $resultado[7];
         $this->conexion->cerrar();
     }
 
@@ -109,7 +110,7 @@ class Paciente extends Persona
         $this->conexion->abrir();
 
         $this->conexion->ejecutar($this->pacienteDAO->fotoExiste());
-        if ($this->conexion->extraer()[0] === "") {
+        if ($this->conexion->extraer()[0] === "" || !($this->conexion->extraer()[0])) {
             $this->conexion->cerrar();
             return 0;
         } else {

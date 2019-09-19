@@ -31,14 +31,12 @@ include 'presentacion/menuAdministrador.php';
 								echo "<td>" . $p->getNombre() . "</td>";
 								echo "<td>" . $p->getApellido() . "</td>";
 								echo "<td>" . $p->getCorreo() . "</td>";
-								echo "<td>" . $p->getEstado() . "</td>";
+								echo "<td>" . (($p->getEstado()==1)?"<i class='fas fa-check-circle fa-2x text-success'></i>":"<i class='fas fa-times-circle fa-2x text-danger'></i>") . "</td>";
 								echo "<td>" . (($p->getFoto() !== "" && file_exists("img/" . $p->getFoto() . "") && $p->getFoto()) ?
 									"<img src='img/" . $p->getFoto() . "' alt='Imagen de usuario" . $p->getFoto() . "' height='50px'>" : "<i class='fas fa-user-tie fa-3x'></i>") . "</td>";
 
 								echo "<td>" .
-									"<a href='modalPaciente.php?idPaciente=" . $p->getId() . "' data-toggle='modal' 
-									data-target='#modalPaciente' ><span class='fas fa-eye' data-toggle='tooltip' class='tooltipLink' 
-										data-placement='left' data-original-title='Ver Detalles' ></span> </a>
+									"<a href='modalPaciente.php?idPaciente=" . $p->getId() . "' data-toggle='modal' data-target='#modalPaciente' ><span class='fas fa-eye' data-toggle='tooltip' class='tooltipLink' data-placement='left' data-original-title='Ver Detalles' ></span> </a>
 								<a class='fas fa-pencil-ruler' href='index.php?pid=" .
 									base64_encode("presentacion/paciente/actualizarPaciente.php") . "&idPaciente=" .
 									$p->getId() . "' data-toggle='tooltip' data-placement='left' title='Actualizar'> </a>
@@ -67,7 +65,7 @@ include 'presentacion/menuAdministrador.php';
 </div>
 
 <script>
-	$('body').on('show.bs.modal', '.modal', function(e) {
+	$('body').on('show.bs.modal', '.modal', function (e) {
 		var link = $(e.relatedTarget);
 		$(this).find(".modal-content").load(link.attr("href"));
 	});

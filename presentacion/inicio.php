@@ -18,11 +18,11 @@
 						<?php
 						if (isset($_GET['correo'])) {
 							echo "<div class='alert alert-danger' role='alert'>";
-							echo "El correo ingresado o la clave son incorrectos";
+							echo "Correo o clave incorrectos";
 							echo "</div>";
 						}elseif (isset($_GET['estado'])) {
 							echo "<div class='alert alert-danger' role='alert'>";
-							echo "El usuario no esta activado aun";
+							echo "El usuario no esta activo aun";
 							echo "</div>";
 						}
 						?>

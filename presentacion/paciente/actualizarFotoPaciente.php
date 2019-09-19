@@ -23,8 +23,8 @@ if (isset($_FILES['foto'])) {
 		$hora = round(microtime(true) * 1000);
 		$nombreFoto = $hora . "." . $ext_archivo;
 		move_uploaded_file($_FILES['foto']['tmp_name'], "img/" . $nombreFoto);
-		if ($paciente->fotoExiste() != 0) {
-			unlink("img/" . $paciente->fotoExiste());
+		if ($paciente->fotoExiste() != 0 && file_exists("img/" . $paciente->getFoto())) {
+			unlink("img/" . $paciente->getFoto());
 		}
 		$paciente = new Paciente($_GET["idPaciente"], "", "", "", "", "", "", "", "", $nombreFoto);
 		$paciente->actualizarFoto();
