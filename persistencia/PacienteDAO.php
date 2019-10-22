@@ -63,7 +63,7 @@ class PacienteDAO
     {
         return "SELECT idpaciente, nombre, apellido, correo, estado, foto
                 FROM paciente
-                ORDER BY apellido";
+                ORDER BY idpaciente";
     }
 
     function fotoExiste()
@@ -85,5 +85,13 @@ class PacienteDAO
         return "SELECT idpaciente, estado
                 FROM paciente
                 WHERE correo = '" . $this->correo . "' and clave = md5('" . $this->clave . "')";
+    }
+    
+    function actualizarEstado(){
+        $est = ($this->estado==1)?"0":"1";
+        return "UPDATE paciente
+                SET estado = " . $est .
+                " WHERE idpaciente = " . $this->id;
+                
     }
 }

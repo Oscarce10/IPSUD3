@@ -26,7 +26,7 @@ include 'presentacion/menuAdministrador.php';
 						<tbody>
 							<?php
 							foreach ($pacientes as $p) {
-								echo "<tr>";
+								echo "<tr id='pac" .$p->getId() ."'>";
 								echo "<td>" . $p->getId() . "</td>";
 								echo "<td>" . $p->getNombre() . "</td>";
 								echo "<td>" . $p->getApellido() . "</td>";
@@ -39,12 +39,18 @@ include 'presentacion/menuAdministrador.php';
 									"<a href='modalPaciente.php?idPaciente=" . $p->getId() . "' data-toggle='modal' data-target='#modalPaciente' ><span class='fas fa-eye' data-toggle='tooltip' class='tooltipLink' data-placement='left' data-original-title='Ver Detalles' ></span> </a>
 								<a class='fas fa-pencil-ruler' href='index.php?pid=" .
 									base64_encode("presentacion/paciente/actualizarPaciente.php") . "&idPaciente=" .
-									$p->getId() . "' data-toggle='tooltip' data-placement='left' title='Actualizar'> </a>
+									$p->getId() . "' data-toggle='tooltip' data-placement='top' title='Actualizar'> </a>
 												   
 					   			<a class='fas fa-camera' href='index.php?pid=" . base64_encode("presentacion/paciente/actualizarFotoPaciente.php") .
-									"&idPaciente=" . $p->getId() . "' data-toggle='tooltip' data-placement='left' title='Actualizar Foto'> </a>
-              						</td>";
+									"&idPaciente=" . $p->getId() . "' data-toggle='tooltip' data-placement='bottom' title='Actualizar Foto'></a>";
+									  
+								echo ($p->getEstado())?"<a class='fas fa-lock-open' id='hab" .$p->getId() ."' href='#' data-toggle='tooltip' data-placement='right' 
+								title='Inhabilitar paciente'></a>":"<a class='fas fa-lock' href='#' id='hab" .$p->getId() ."' data-toggle='tooltip' 
+								data-placement='right' title='Habilitar paciente'></a>" . "</td>";
+
 								echo "</tr>";
+
+								
 							}
 							echo "<tr><td colspan='9'>" . count($pacientes) . " registros encontrados</td></tr>" ?>
 						</tbody>
@@ -70,3 +76,15 @@ include 'presentacion/menuAdministrador.php';
 		$(this).find(".modal-content").load(link.attr("href"));
 	});
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){	
+	<?php foreach ($pacientes as $p) { ?>
+		$("#hab<?php echo $p -> getId();?>").click(function(){
+			<?php echo "var ruta = \"indexAjax.php?pid=" . base64_encode("presentacion/paciente/editarEstadoPacienteAjax.php") . "&idPaciente=" . $p -> getId() . "&estado=" . (($p -> getEstado() == 1)?"1":"0") . "\";" ?>
+			$("#hab<?php echo $p -> getId();?>").tooltip('hide');
+			$("#pac<?php echo $p -> getId();?>").load(ruta);
+		});
+		<?php } ?>
+	});
+	</script>

@@ -143,4 +143,10 @@ class Paciente extends Persona
             return false;
         }
     }
+
+    function actualizarEstado(){
+        $this -> conexion -> abrir();
+        $this->conexion->ejecutar($this->pacienteDAO->actualizarEstado());
+        $this -> conexion -> cerrar();
+    }
 }
