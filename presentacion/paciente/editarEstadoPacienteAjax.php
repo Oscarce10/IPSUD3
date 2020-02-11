@@ -4,6 +4,8 @@ $paciente->actualizarEstado();
 $paciente->consultar();
 $p = $paciente;
 
+# Dado a que la fila correspondiente al paciente actualizado de la tabla se carga completamente, se escriben todos los datos del paciente en esta
+# Incluyendo la foto, estado, iconos, etc
 echo "<td>" . $p->getId() . "</td>";
 echo "<td>" . $p->getNombre() . "</td>";
 echo "<td>" . $p->getApellido() . "</td>";
@@ -27,7 +29,11 @@ echo "<td>" .
 								echo "</td>"
 ?>
 <script>
+// Se vuelve a agregar el script del tooltip para que estos aparezcan nuevamente la capa cargada 
 $('[data-toggle="tooltip"]').tooltip();
+
+// Se agrega el script de AJAX para el nuevo candado agregado por si el administrador desea actualizar nuevamente el estado.
+// Esto hace que se repita todo el proceso nuevamente solo con esa capa
 $("#hab<?php echo $p -> getId();?>").click(function(){
 	<?php echo "var ruta = \"indexAjax.php?pid=" . base64_encode("presentacion/paciente/editarEstadoPacienteAjax.php") . "&idPaciente=" . $p -> getId() . "&estado=" . $p -> getEstado() . "\";"; ?>
 	$("#hab<?php echo $p -> getId();?>").tooltip('hide');
