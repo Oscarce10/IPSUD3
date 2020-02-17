@@ -149,4 +149,17 @@ class Paciente extends Persona
         $this->conexion->ejecutar($this->pacienteDAO->actualizarEstado());
         $this -> conexion -> cerrar();
     }
+    
+    function filtroPaciente($filtro) {
+        $this->conexion->abrir();
+        $this->conexion->ejecutar($this->pacienteDAO->filtroPaciente($filtro));
+        $resultados = array();
+        $i = 0;
+        while (($registro = $this->conexion->extraer()) != null) {
+            $resultados[$i] = new Paciente($registro[0], $registro[1], $registro[2], $registro[3], "", "", $registro[4], "", "", $registro[5]);
+            $i++;
+        }
+        $this->conexion->cerrar();
+        return $resultados;
+    }
 }

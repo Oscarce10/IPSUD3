@@ -94,4 +94,8 @@ class PacienteDAO
                 " WHERE idpaciente = " . $this->id;
                 
     }
+    
+    function filtroPaciente($filtro) {
+        return "SELECT * FROM paciente WHERE nombre LIKE '%".$filtro."%' AND apellido LIKE '%".$filtro."%'";
+    }
 }
