@@ -96,6 +96,6 @@ class PacienteDAO
     }
     
     function filtroPaciente($filtro) {
-        return "SELECT * FROM paciente WHERE nombre LIKE '%".$filtro."%' AND apellido LIKE '%".$filtro."%'";
+        return "SELECT * FROM paciente WHERE nombre LIKE '%".$filtro."%' OR apellido LIKE '%".$filtro."%'";
     }
 }

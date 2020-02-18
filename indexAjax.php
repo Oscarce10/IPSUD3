@@ -6,3 +6,5 @@ $pid = base64_decode($_GET["pid"]);
 include $pid;
 ?>
 
+
+<script src="js/script.js"></script>
