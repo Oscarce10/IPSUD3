@@ -50,6 +50,14 @@ $(document).ready(function(){
 			$("#tabla").hide();
 		
 			});	
+
+	//Al presionar enter se cierra la sesion, esto evita que eso pase
+	$(document).keypress(
+			  function(event){
+			    if (event.which == '13') {
+			      event.preventDefault();
+			    }
+			});
 	
 });
 </script>

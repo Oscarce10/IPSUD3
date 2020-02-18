@@ -96,8 +96,9 @@ class PacienteDAO
     }
     
     function filtroPaciente($filtro) {
+    	// CONCAT hace de que se pueda hacer una consulta usando nombre y apellido al tiempo, no separado
         return "SELECT idpaciente, nombre, apellido, correo, estado, foto 
 				FROM paciente 
-				WHERE nombre LIKE '%".$filtro."%' OR apellido LIKE '%".$filtro."%'";
+				WHERE nombre LIKE '%".$filtro."%' OR apellido LIKE '%".$filtro."%' OR CONCAT(nombre, ' ', apellido) LIKE '%".$filtro."%'";
     }
 }
