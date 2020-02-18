@@ -44,7 +44,7 @@ $pacientes = $paciente->filtroPaciente ( $filtro );
 					   			<a class='fas fa-camera' href='index.php?pid=" . base64_encode ( "presentacion/paciente/actualizarFotoPaciente.php" ) . "&idPaciente=" . $p->getId () . "' data-toggle='tooltip' data-placement='bottom' title='Actualizar Foto'></a>";
 
 					// Icono de candado a cambiar dependiendo si el paciente esta activo o no
-					echo "<span id='status" . $p->getId () . "'><a style='margin-left: 3px' class='" . (($p->getEstado () == 0) ? "fas fa-lock-open' title='Habilitar paciente' " : "fas fa-lock' title='Inhabilitar paciente'") . "' id='hab" . $p->getId () . "' href='#' data-toggle='tooltip' data-placement='right' </a></span>";
+					echo "<span id='status" . $p->getId () . "'><a style='margin-left: 3px' class='" . (($p->getEstado () == 0) ? "fas fa-lock-open' title='Habilitar paciente' " : "fas fa-lock' title='Inhabilitar paciente'") . "' id='hab" . $p->getId () . "' href='#pac" . $p->getId () . "' data-toggle='tooltip' data-placement='right' </a></span>";
 
 					echo "</tr>";
 				}
