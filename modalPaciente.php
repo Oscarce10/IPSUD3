@@ -2,7 +2,7 @@
 require_once 'logica/Persona.php';
 require_once 'logica/Paciente.php';
 
-$idPaciente = $_GET['idPaciente'];
+$idPaciente = $_GET['aWRQYWNpZW50'];
 $paciente = new Paciente($idPaciente);
 $paciente->consultar();
 
