@@ -1,6 +1,8 @@
 <?php 
-require ('modelos/fpdf/fpdf.php');
-session_start();
+require 'logica/Persona.php';
+require 'logica/Administrador.php';
+require 'logica/Paciente.php';
+require_once ('modelos/fpdf/fpdf.php');
 
 
 // cd D:\xampp\htdocs\IPSUD3\modelos\fpdf\font
@@ -36,19 +38,21 @@ class MyPdf extends FPDF{
 	}
 	
 	function viewTable() {
-		$pacientes = unserialize($_SESSION["pacientes"]);
+		$paciente = new Paciente();
+		$pacientes = $paciente->consultarTodos();
 		foreach ( $pacientes as $p ) {
-			$this->Cell(20 ,10 , $p->getId() , 1, 0, "C");
-			$this->Cell(47 ,10 , $p->getNombre(), 1, 0, "C");
-			$this->Cell(47 ,10 , $p->getApellido()  , 1, 0, "C");
-			$this->Cell(47 ,10 , $p->getCedula() , 1, 0, "C");
-			$this->Cell(47 ,10 , $p->getCorreo() , 1, 0, "C");
-			$this->Cell(20 ,10 , include "verImagen.php?loc=" . base64_encode("img/".($p->getEstado () == 1)?"check.svg":"times.svg") . "&h=10&w=20" , 1, 0, "C");
-			$this->Cell(47 ,10 , include "verImagen.php?loc=" . base64_encode($p->getFoto ()). "&h=10&w=47", 1, 0, "C");
+		    $this->Cell(20 ,35 , $p->getId() , 1, 0, "C");
+		    $this->Cell(47 ,35 , $p->getNombre(), 1, 0, "C");
+		    $this->Cell(47 ,35 , $p->getApellido()  , 1, 0, "C");
+		    $this->Cell(47 ,35 , $p->getCedula() , 1, 0, "C");
+		    $this->Cell(47 ,35 , $p->getCorreo() , 1, 0, "C");
+		    $this->Cell(20 ,35 , $this->Image("img/".($p->getEstado () == 1)?"img/check.jpg":"img/times.jpg", $this->GetX(), $this->GetY(),15),1,"C");
+		    $this->Cell(47 ,35 , $this->Image("img/".$p->getFoto(), $this->GetX(), $this->GetY(),40),1);
 			$this->Ln();
 		}
 	}
 }
+
 $pdf = new MyPdf("L");
 
 $pdf->AddFont('Roboto', "", 'Roboto-Regular.php');

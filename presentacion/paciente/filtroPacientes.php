@@ -57,7 +57,7 @@ $pacientes = $paciente->filtroPaciente ( $filtro );
 		</table>
 		<?php if(count($pacientes)>0){?>			
 		<a class="btn btn-info" id="export"
-			href="crearPdf.php" target="_blank">Exportar
+			href="index.php?pid=<?php echo base64_encode("crearPdf.php")?>" target="_blank">Exportar
 			resultado como PDF</a>
 		<?php }?>
 	</div>
