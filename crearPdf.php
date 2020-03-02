@@ -46,8 +46,8 @@ class MyPdf extends FPDF{
 		    $this->Cell(47 ,35 , $p->getApellido()  , 1, 0, "C");
 		    $this->Cell(47 ,35 , $p->getCedula() , 1, 0, "C");
 		    $this->Cell(47 ,35 , $p->getCorreo() , 1, 0, "C");
-		    $this->Cell(20 ,35 , $this->Image("img/".($p->getEstado () == 1)?"img/check.jpg":"img/times.jpg", $this->GetX(), $this->GetY(),15),1,"C");
-		    $this->Cell(47 ,35 , $this->Image("img/".$p->getFoto(), $this->GetX(), $this->GetY(),40),1);
+		    $this->Cell(20 ,35 , $this->Image(($p->getEstado () == 1)?"img/check.jpg":"img/times.jpg", $this->GetX()+2, $this->GetY()+5,15),1,"C");
+		    $this->Cell(47 ,35 , $this->Image(($p->getFoto () != "" && file_exists ( "img/" . $p->getFoto () . "" ) && $p->getFoto ())?"img/".$p->getFoto():"img/user.jpg", $this->GetX()+10, $this->GetY()+5,40),1);
 			$this->Ln();
 		}
 	}
