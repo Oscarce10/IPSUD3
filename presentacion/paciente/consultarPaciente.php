@@ -18,10 +18,14 @@ include 'presentacion/menuAdministrador.php';
 					aria-label="Search">
 			</form>
 		</div>
+		<div class="col-6">
+			<a class="btn btn-outline-warning" href="#" role="button">Exportar
+				todos los usuarios como PDF</a>
+		</div>
 	</div>
 
 
-<div class="col-12" id="tabla"></div>
+	<div class="col-12" id="tabla"></div>
 </div>
 
 
@@ -44,7 +48,9 @@ $(document).ready(function(){
 		if($("#formConsulta").val() != ""){
 			$("#tabla").show();
 			<?php echo "var ruta = \"indexAjax.php?pid=" . base64_encode("presentacion/paciente/filtroPacientes.php")."\";";?>
+			
 			$("#tabla").load(ruta, {"filtro": $("#formConsulta").val()})
+			<?php ob_start();?>
 		}
 		else
 			$("#tabla").hide();
@@ -60,4 +66,32 @@ $(document).ready(function(){
 			});
 	
 });
+</script>
+
+<script>
+
+ 
+// function generatePDF(){
+// 	console.log("asdd");
+// 	html2canvas(document.querySelector('body')).then(canvas => {
+// 		let pdf = new jsPDF('p', 'mm', 'a4');
+// 		pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+// 		pdf.save("pacientes");
+// 	});
+// }
+
+function print() {
+	var w = document.getElementById("tabla").offsetWidth;
+	  var h = document.getElementById("tabla").offsetHeight;
+	  html2canvas(document.getElementById("tabla"), {
+	    dpi: 300, // Set to 300 DPI
+	    scale: 0.5, // Adjusts your resolution
+	    onrendered: function(canvas) {
+	      var img = canvas.toDataURL("image/jpeg", 1);
+	      var doc = new jsPDF('L', 'px', [w, h]);
+	      doc.addImage(img, 'JPEG', 0, 0, w, h);
+	      doc.save('pacientes.pdf');
+	    }
+	  });
+}
 </script>
