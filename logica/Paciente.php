@@ -34,6 +34,7 @@ class Paciente extends Persona
     {
         return $this->foto;
     }
+    
 
 
     function Paciente($id = "", $nombre = "", $apellido = "", $correo = "", $clave = "", $cedula = "", $estado = "", $telefono = "", $direccion = "", $foto = "")
@@ -161,5 +162,18 @@ class Paciente extends Persona
         }
         $this->conexion->cerrar();
         return $resultados;
+    }
+    
+    function obtenerCitas() {
+    	$this->conexion->abrir();
+    	$this->conexion->ejecutar($this->pacienteDAO->obtenerCitas());
+    	$resultados = array();
+    	$i = 0;
+    	while (($registro = $this->conexion->extraer()) != null) {
+    		$resultados[$i] = array($registro[0], $registro[1], $registro[2], $registro[3], $registro[4], $registro[5], $registro[6], $registro[7], $registro[8]);
+    		$i++;
+    	}
+    	$this->conexion->cerrar();
+    	return $resultados;
     }
 }

@@ -230,6 +230,37 @@ ALTER TABLE `medico`
   ADD CONSTRAINT `fk_medico_especialidad` FOREIGN KEY (`especialidad_idespecialidad`) REFERENCES `especialidad` (`idespecialidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
+INSERT INTO especialidad(nombre) VALUES 
+("Alergología"), ("Anestesiología"), ("Cardiología"), ("Gastroenterología"), ("Geriatría"),
+("Hematología"), ("Infectología"), ("Medicina del trabajo"), ("Gastroenterología"), ("Medicina de urgencias"),
+("Medicina interna"), ("Nefrología"), ("Neumología"), ("Nutriología"), ("Pediatría"), ("Psiquiatría");
+
+INSERT INTO medico (`idmedico`, `nombre`, `apellido`, `correo`, `clave`, `tarjetaprofesional`, `especialidad_idespecialidad`) VALUES
+(1, 'Jaime', 'Ramirez', 'e2@m.com', 'c81e728d9d4c2f636f067f89cc14862c', "md102", 1),
+(2, 'Isabella', 'Barragán', 'e3@m.com', 'eccbc87e4b5ce2fe28308fd9f2a7baf3', "md103", 5),
+(3, 'Olivia', 'Gómez', 'e4@m.com', 'a87ff679a2f3e71d9181a67b7542122c', "md104", 5),
+(4, 'David', 'López', 'e5@m.com', 'e4da3b7fbbce2345d7772b0674a318d5', "md105", 7),
+(5, 'Alexis', 'González', 'e6@m.com', '1679091c5a880faf6fb5e6087eb1b2dc', "md106", 7),
+(6, 'Sofía', 'Martínez', 'e7@m.com', '8f14e45fceea167a5a36dedd4bea2543', "md108", 1),
+(7, 'Victoria', 'Díaz', 'e8@m.com', 'c9f0f895fb98ab9159f51fd0297e236d', "md109", 2),
+(8, 'Gabriel', 'Torres', 'e9@m.com', '45c48cce2e2d7fbdea1afc51c7c6ad26', "md110", 14),
+(9, 'Sebastián', 'Vargas', 'e10@m.com', 'd3d9446802a44259755d38e6d163e820', "md111", 10),
+(10, 'Diego', 'Ramirez', 'e11@m.com', '6512bd43d9caa6e02c990b0a82652dca', "md112", 9),
+(11, 'Horacio', 'Gomez', 'e12@m.com', 'c20ad4d76fe97759aa27a0c99bff6710', "md113", 10),
+(12, 'Sharon', 'Bohorquez', 'e13@m.com', 'c51ce410c124a10e0db5e4b97fc2af39', "m12", 6);
+
+INSERT INTO consultorio (nombre) VALUES
+("401"), ("502"), ("302"), ("101"), ("107"),
+("202"), ("205"), ("402"), ("305"), ("207");
+
+INSERT into cita (fecha, hora, medico_idmedico, paciente_idpaciente, consultorio_idconsultorio) VALUES
+('2020-03-09', '09:30:00', 2, 1, 1), ('2020-03-15', '10:30:00', 10, 2, 7), ('2020-03-28', '12:30:00', 3, 3, 3), 
+('2020-03-10', '07:00:00', 5, 1, 7), ('2020-03-20', '11:45:00', 8, 2, 4),  ('2020-03-22', '18:00:00', 8, 3, 4), 
+('2020-03-15', '14:30:00', 6, 1, 9), ('2020-03-09', '13:30:00', 2, 1, 10), ('2020-03-17', '17:45:00', 9, 3, 7);
+
+
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

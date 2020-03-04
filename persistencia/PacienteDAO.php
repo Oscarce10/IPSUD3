@@ -13,7 +13,7 @@ class PacienteDAO
     private $telefono;
     private $direccion;
     private $foto;
-
+    
     function PacienteDAO($id = "", $nombre = "", $apellido = "", $correo = "", $clave = "", $cedula = "", $estado = "", $telefono = "", $direccion = "", $foto = "")
     {
         $this->id = $id;
@@ -100,5 +100,13 @@ class PacienteDAO
         return "SELECT idpaciente, nombre, apellido, correo, estado, foto 
 				FROM paciente 
 				WHERE nombre LIKE '%".$filtro."%' OR apellido LIKE '%".$filtro."%' OR CONCAT(nombre, ' ', apellido) LIKE '%".$filtro."%'";
+    }
+    
+    function obtenerCitas() {
+    	return 'SELECT p.idpaciente, CONCAT(p.nombre, " ", p.apellido), p.correo, p.foto, c.fecha, c.hora, CONCAT(m.nombre, " ", m.apellido), co.nombre, especialidad.nombre
+				FROM paciente AS p, cita AS c, medico AS m, consultorio as co, especialidad
+				WHERE c.paciente_idpaciente = p.idpaciente AND c.medico_idmedico = m.idmedico AND co.idconsultorio = c.consultorio_idconsultorio 
+							AND especialidad.idespecialidad = m.especialidad_idespecialidad
+				ORDER BY p.idpaciente;';
     }
 }
