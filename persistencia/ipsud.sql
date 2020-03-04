@@ -128,7 +128,7 @@ INSERT INTO `paciente` (`idpaciente`, `nombre`, `apellido`, `correo`, `clave`, `
 (6, 'Lex', 'Lutor', '60@60.com', '072b030ba126b2f4b2374f342be9ed44', '60', 0, NULL, NULL, NULL);
 
 --
--- Índices para tablas volcadas
+-- indices para tablas volcadas
 --
 
 --
@@ -231,9 +231,9 @@ ALTER TABLE `medico`
 COMMIT;
 
 INSERT INTO especialidad(nombre) VALUES 
-("Alergología"), ("Anestesiología"), ("Cardiología"), ("Gastroenterología"), ("Geriatría"),
-("Hematología"), ("Infectología"), ("Medicina del trabajo"), ("Gastroenterología"), ("Medicina de urgencias"),
-("Medicina interna"), ("Nefrología"), ("Neumología"), ("Nutriología"), ("Pediatría"), ("Psiquiatría");
+("Alergologia"), ("Anestesiologia"), ("Cardiologia"), ("Gastroenterologia"), ("Geriatria"),
+("Hematologia"), ("Infectologia"), ("Medicina del trabajo"), ("Gastroenterologia"), ("Medicina de urgencias"),
+("Medicina interna"), ("Nefrologia"), ("Neumologia"), ("Nutriologia"), ("Pediatria"), ("Psiquiatria");
 
 INSERT INTO medico (`idmedico`, `nombre`, `apellido`, `correo`, `clave`, `tarjetaprofesional`, `especialidad_idespecialidad`) VALUES
 (1, 'Jaime', 'Ramirez', 'e2@m.com', 'c81e728d9d4c2f636f067f89cc14862c', "md102", 1),
@@ -241,8 +241,8 @@ INSERT INTO medico (`idmedico`, `nombre`, `apellido`, `correo`, `clave`, `tarjet
 (3, 'Olivia', 'Gómez', 'e4@m.com', 'a87ff679a2f3e71d9181a67b7542122c', "md104", 5),
 (4, 'David', 'López', 'e5@m.com', 'e4da3b7fbbce2345d7772b0674a318d5', "md105", 7),
 (5, 'Alexis', 'González', 'e6@m.com', '1679091c5a880faf6fb5e6087eb1b2dc', "md106", 7),
-(6, 'Sofía', 'Martínez', 'e7@m.com', '8f14e45fceea167a5a36dedd4bea2543', "md108", 1),
-(7, 'Victoria', 'Díaz', 'e8@m.com', 'c9f0f895fb98ab9159f51fd0297e236d', "md109", 2),
+(6, 'Sofia', 'Martinez', 'e7@m.com', '8f14e45fceea167a5a36dedd4bea2543', "md108", 1),
+(7, 'Victoria', 'Diaz', 'e8@m.com', 'c9f0f895fb98ab9159f51fd0297e236d', "md109", 2),
 (8, 'Gabriel', 'Torres', 'e9@m.com', '45c48cce2e2d7fbdea1afc51c7c6ad26', "md110", 14),
 (9, 'Sebastián', 'Vargas', 'e10@m.com', 'd3d9446802a44259755d38e6d163e820', "md111", 10),
 (10, 'Diego', 'Ramirez', 'e11@m.com', '6512bd43d9caa6e02c990b0a82652dca', "md112", 9),
