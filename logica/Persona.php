@@ -26,7 +26,7 @@ class Persona {
     }
     
     
-    function Persona ($id, $nombre, $apellido, $correo, $clave){
+    function __construct ($id, $nombre, $apellido, $correo, $clave){
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> apellido = $apellido;

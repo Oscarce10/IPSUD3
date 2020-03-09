@@ -37,9 +37,9 @@ class Paciente extends Persona
     
 
 
-    function Paciente($id = "", $nombre = "", $apellido = "", $correo = "", $clave = "", $cedula = "", $estado = "", $telefono = "", $direccion = "", $foto = "")
+    function __construct($id = "", $nombre = "", $apellido = "", $correo = "", $clave = "", $cedula = "", $estado = "", $telefono = "", $direccion = "", $foto = "")
     {
-        $this->Persona($id, $nombre, $apellido, $correo, $clave);
+        parent::__construct($id, $nombre, $apellido, $correo, $clave);
         $this->cedula = $cedula;
         $this->estado = $estado;
         $this->telefono = $telefono;

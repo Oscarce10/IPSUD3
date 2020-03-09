@@ -1,15 +1,15 @@
 <?php
 require 'persistencia/AdministradorDAO.php';
-require_once 'persistencia/Conexion.php';
+include 'persistencia/Conexion.php';
 
 class Administrador extends Persona
 {
     private $administradorDAO;
     private $conexion;
 
-    function Administrador($id = "", $nombre = "", $apellido = "", $correo = "", $clave = "")
+    function __construct($id = "", $nombre = "", $apellido = "", $correo = "", $clave = "")
     {
-        $this->Persona($id, $nombre, $apellido, $correo, $clave);
+        parent::__construct($id, $nombre, $apellido, $correo, $clave);
         $this->conexion = new Conexion();
         $this->administradorDAO = new AdministradorDAO($id, $nombre, $apellido, $correo, $clave);
     }

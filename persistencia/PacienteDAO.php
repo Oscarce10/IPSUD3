@@ -14,7 +14,7 @@ class PacienteDAO
     private $direccion;
     private $foto;
     
-    function PacienteDAO($id = "", $nombre = "", $apellido = "", $correo = "", $clave = "", $cedula = "", $estado = "", $telefono = "", $direccion = "", $foto = "")
+    function __construct($id = "", $nombre = "", $apellido = "", $correo = "", $clave = "", $cedula = "", $estado = "", $telefono = "", $direccion = "", $foto = "")
     {
         $this->id = $id;
         $this->nombre = $nombre;

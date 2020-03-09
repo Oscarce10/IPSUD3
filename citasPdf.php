@@ -1,8 +1,9 @@
 <?php
-/*session_start();
+session_start();
+
 if(!isset($_SESSION["id"])){
 	header("Location: index.php");
-} */
+}
 
 require 'logica/Persona.php';
 require 'logica/Administrador.php';

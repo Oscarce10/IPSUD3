@@ -7,7 +7,7 @@ class AdministradorDAO
     private $correo;
     private $clave;
 
-    function AdministradorDAO($id, $nombre, $apellido, $correo, $clave)
+    function __construct($id, $nombre, $apellido, $correo, $clave)
     {
         $this->id = $id;
         $this->nombre = $nombre;

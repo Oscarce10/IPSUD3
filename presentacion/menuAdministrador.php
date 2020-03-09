@@ -18,6 +18,23 @@
 						class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php")?>">Paciente</a> <a
 						class="dropdown-item" href="#">Medico</a>
 				</div></li>
+				
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+				href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false"> Ver </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPacientes.php")?>">Todos los pacientes</a> <a
+						class="dropdown-item" href="index.php?pid=<?php echo base64_encode("presentacion/paciente/consultarPaciente.php")?>">Filtrar paciente</a> 
+				</div></li>
+				
+				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+				href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false"> Reportes </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="crearPdf.php" target="_blank">Todos los pacientes en PDF</a> <a
+						class="dropdown-item" href="citasPdf.php" target="_blank">Citas actuales en PDF</a> 
+				</div></li>
+				
 			<li class="nav-item"><a class="nav-link" href="index.php">Salida</a>
 			</li>
 		</ul>
