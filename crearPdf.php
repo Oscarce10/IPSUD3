@@ -1,4 +1,5 @@
-<?php 
+<?php
+date_default_timezone_set('America/Bogota');
 session_start();
 
 if(!isset($_SESSION["id"])){
@@ -28,10 +29,10 @@ class MyPdf extends FPDF{
 		$this->Ln();
 		$this->Cell(276,10,(isset($_POST["filtro"]))?"Resultado de pacientes filtrados":"Informe de pacientes registrados",0,0,"C");
 		$this->Ln();
-        $this->Cell(276, 5, date("d/m/y") . "  " .  date("H:i"), 0, 0, "C");
+        $this->Cell(276, 5, date("d/m/yy") . "  " .  date("g:i A"), 0, 0, "C");
 		$this->Ln(20);
 	}
-	
+
 	function Footer() {
 		$this->SetY(-15);
 		$this->Cell(0, 10, $this->PageNo() . '/{nb}', 0, 0, "R");

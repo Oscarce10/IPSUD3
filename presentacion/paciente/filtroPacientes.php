@@ -1,7 +1,12 @@
 <?php
-$filtro = $_POST ["filtro"];
 $paciente = new Paciente ();
-$pacientes = $paciente->filtroPaciente($filtro);
+if(isset($_POST["filtro"])){
+    $filtro = $_POST ["filtro"];
+    $pacientes = $paciente->filtroPaciente($filtro);
+
+}else{
+    $pacientes = $paciente->consultarTodos();
+}
 
 ?>
 <div class="card" id="table">
@@ -55,7 +60,7 @@ $pacientes = $paciente->filtroPaciente($filtro);
             </tbody>
 
         </table>
-        <?php if (count($pacientes) > 0) { ?>
+        <?php if (count($pacientes) > 0 && isset($filtro)){ ?>
 
             <form action="crearPdf.php" method="POST" target="_blank">
                 <input type="hidden" name="filtro" value="<?php echo $_POST["filtro"]; ?>">
